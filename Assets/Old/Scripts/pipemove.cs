@@ -8,12 +8,14 @@ public class pipemove : MonoBehaviour
     
     void Update()
     {
-        //caso o player não tenha morrido e tenha iniciado o jogo, pilastras instanciadas se movem
-        if (!GameManager.inst.getDeath() && GameManager.inst.getInit()) {
-            transform.position = transform.position + ( Vector3.left * velocidade * Time.deltaTime);
-            if (transform.position.x < -7.0f) {
-                Destroy(gameObject);
-            }
-        }
+        //caso o player nï¿½o tenha morrido e tenha iniciado o jogo, pilastras instanciadas se movem
+        // if (!GameManager.inst.getDeath() && GameManager.inst.getInit()) {
+        //     transform.position = transform.position + ( Vector3.left * velocidade * Time.deltaTime);
+        //     if (transform.position.x < -8.0f) {
+        //         Destroy(gameObject);
+        //     }
+        // }
+
+
     }
 }

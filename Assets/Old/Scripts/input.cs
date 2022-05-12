@@ -11,33 +11,33 @@ public class input : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!GameManager.inst.getDeath() && GameManager.inst.getInit())//caso o personagem n�o tenha morrido e tenha iniciado o jogo
-        {
-            gameObject.GetComponent<Animator>().SetFloat("velx", 10);// come�ar a correr
-            if (Input.GetMouseButton(1))
-            {
-                if (gameObject.GetComponent<groundcheck>().getEstaNoChao()&&!isSlide) { 
+        // if (!GameManager.inst.getDeath() && GameManager.inst.getInit())//caso o personagem n�o tenha morrido e tenha iniciado o jogo
+        // {
+        //     gameObject.GetComponent<Animator>().SetFloat("velx", 10);// come�ar a correr
+        //     if (Input.GetMouseButton(1))
+        //     {
+        //         if (gameObject.GetComponent<groundcheck>().getEstaNoChao()&&!isSlide) { 
                     
-                    gameObject.GetComponent<Animator>().SetTrigger("slide");//efetua o slide
-                }
-                else
-                {
-                    gameObject.GetComponent<controller>().Movimento(false, true);//cai no ch�o mais r�pido
-                }
-            }
-            if (Input.GetMouseButton(0) && gameObject.GetComponent<groundcheck>().getEstaNoChao()) //caso aperte o botao de pular e esteja no chao
-            {
-                SlideEnd();//cancela o slide
-                gameObject.GetComponent<controller>().Movimento(true, false); //efetuar o impulso do pulo
-            }
-            Movimentar(); //controle caso seja importado para android
-            //seta as vari�veis no animator
-            gameObject.GetComponent<Animator>().SetFloat("vely", gameObject.GetComponent<Rigidbody2D>().velocity.y);
-            gameObject.GetComponent<Animator>().SetBool("estanochao", gameObject.GetComponent<groundcheck>().getEstaNoChao());
-        }
-        else {
-            gameObject.GetComponent<Animator>().SetFloat("velx", 0);//caso tenha morrido, ou n�o tenha iniciado a anima��o seta a velx para 0
-        }
+        //             gameObject.GetComponent<Animator>().SetTrigger("slide");//efetua o slide
+        //         }
+        //         else
+        //         {
+        //             gameObject.GetComponent<controller>().Movimento(false, true);//cai no ch�o mais r�pido
+        //         }
+        //     }
+        //     if (Input.GetMouseButton(0) && gameObject.GetComponent<groundcheck>().getEstaNoChao()) //caso aperte o botao de pular e esteja no chao
+        //     {
+        //         SlideEnd();//cancela o slide
+        //         gameObject.GetComponent<controller>().Movimento(true, false); //efetuar o impulso do pulo
+        //     }
+        //     Movimentar(); //controle caso seja importado para android
+        //     //seta as vari�veis no animator
+        //     gameObject.GetComponent<Animator>().SetFloat("vely", gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        //     gameObject.GetComponent<Animator>().SetBool("estanochao", gameObject.GetComponent<groundcheck>().getEstaNoChao());
+        // }
+        // else {
+        //     gameObject.GetComponent<Animator>().SetFloat("velx", 0);//caso tenha morrido, ou n�o tenha iniciado a anima��o seta a velx para 0
+        // }
     }
     void Movimentar()
     {

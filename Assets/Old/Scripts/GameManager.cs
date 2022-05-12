@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int score = 0;
     [SerializeField]
-    private bool Init = false,death = false;
+    public bool isGameRunning = false, death = false;
     [SerializeField]
     private Text txtScore;
     [SerializeField]
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         hidenPlay[1].SetActive(false);
         hidenPlay[2].SetActive(false);
         hidenPlay[4].SetActive(true);
-        Init = true;
+        isGameRunning = true;
     }
     public bool getDeath()
     {
@@ -90,12 +90,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public bool getInit()
-    {
-        return Init;
-    }
-    public void SetInit(bool p)
-    {
-        Init = p;
-    }
+    // public bool getInit()
+    // {
+    //     return isGameRunning;
+    // }
+    // public void SetInit(bool p)
+    // {
+    //     isGameRunning = p;
+    // }
 }

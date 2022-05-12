@@ -157,10 +157,10 @@ GameObject:
   - component: {fileID: 2693153779893285286}
   - component: {fileID: 2693153779893285285}
   - component: {fileID: 2693153779893285284}
-  - component: {fileID: 1849870282186202766}
+  - component: {fileID: -5197108063947673268}
   m_Layer: 0
   m_Name: pipejump2
-  m_TagString: pipe
+  m_TagString: MovingObstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1849870282186202766
+--- !u!114 &-5197108063947673268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2693153779893285283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6afd30846857ccb4486fa6d603cee1ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c153d08ad1d645478131cecd7aa4a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 4
+  speed: 4

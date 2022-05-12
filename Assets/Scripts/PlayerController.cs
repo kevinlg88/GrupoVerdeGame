@@ -12,15 +12,17 @@ namespace GreenTeam
         {
             public bool moveUp;
             public bool moveDown;
+            public bool tap;
 
             public void UpdateInputs()
             {
                 moveUp = Input.GetMouseButton(0);
+                tap = Input.GetMouseButtonDown(0);
                 moveDown = Input.GetMouseButton(1);
             }
 
         }
-        [SerializeField] Inputs inputs = new Inputs();
+        public Inputs inputs = new Inputs();
         #endregion
         [Header("Configs")]
         public float jumpForce;
@@ -46,31 +48,38 @@ namespace GreenTeam
 
         Rigidbody2D rb;
 
-        Animator animator;
+        Animator _animator;
+
+        public Animator animator{ get => _animator; }
 
         void Awake()
         {
             initialPosition = transform.position;
             rb = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
         }
         void Start()
         {
-            animator.SetFloat("velx", 10);
+            _animator.SetFloat("velx", 10);
         }
         void Update()
         {
             inputs.UpdateInputs();
             IsOnGroundCheck();
+            CheckIfLose();
         }
         void FixedUpdate()
         {
+            if(isDead)
+            return;
+            
             SetXPosition();
             Movement();
         }
 
         void Movement()
         {
+
             if (inputs.moveUp && isOnGround)
             {
                 // isOnGround = false;
@@ -81,7 +90,7 @@ namespace GreenTeam
                 if(!isOnGround)
                     rb.AddForce(new Vector2(0f, -getDownForce), ForceMode2D.Impulse);
                 else if(!isSliding)
-                    animator.SetTrigger("slide");
+                    _animator.SetTrigger("slide");
 
             }
         }
@@ -96,14 +105,9 @@ namespace GreenTeam
         private void OnCollisionEnter2D(Collision2D collision)
         {
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
-            if (collision.collider.CompareTag("pipe")) {
-                if (!GameManager.inst.getDeath()){
-                    isDead = true;
-                    GameManager.inst.SetDeath();
-                    gameObject.GetComponent<Animator>().SetTrigger("death");
-                    PlayerSounds.inst.sounds[4].Play();
-                    animator.SetFloat("velx", 0);//caso tenha morrido, ou n�o tenha iniciado a anima��o seta a velx para 0
-                }
+            if (collision.collider.CompareTag("MovingObstacles")) {
+                float percentageToLost = 0.05f;
+                playerXPositionPercentage += Mathf.Lerp(0, percentageToLost, 1f);
             }
         }
 
@@ -112,6 +116,19 @@ namespace GreenTeam
             float newXPosition = initialPosition.x + (losePosition.position.x * playerXPositionPercentage) ;
             // Debug.Log(newXPosition);
             transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+        }
+
+        void CheckIfLose()
+        {
+            
+            if(playerXPositionPercentage >= 1)
+                if (!GameManager.inst.getDeath()){
+                    isDead = true;
+                    GameManager.inst.SetDeath();
+                    gameObject.GetComponent<Animator>().SetTrigger("death");
+                    PlayerSounds.inst.sounds[4].Play();
+                    _animator.SetFloat("velx", 0);
+                }
         }
 
         public void playRun1() {
