@@ -14,9 +14,9 @@ public class spawnpipes : MonoBehaviour
 
     void Update()
     {
-        //caso o player n�o tenha morrido e tenha iniciado o jogo:
+        // caso o player n�o tenha morrido e tenha iniciado o jogo:
         // instancia uma pilastra aleat�ria em um determinado tempo aleat�rio
-        if (!GameManager.inst.getDeath() && GameManager.inst.isGameRunning)
+        if (!GameManager.inst.death && GameManager.inst.isGameRunning)
         {
             tempoDecorrido += Time.deltaTime;
             if (tempoDecorrido >= tempoSorteado)

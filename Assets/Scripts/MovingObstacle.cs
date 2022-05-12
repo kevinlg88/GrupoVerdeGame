@@ -18,7 +18,7 @@ namespace GreenTeam
         
         void Update()
         {
-            if (!GameManager.inst.getDeath() && GameManager.inst.isGameRunning) {
+            if (!GameManager.inst.death && GameManager.inst.isGameRunning) {
                 transform.position = transform.position + ( Vector3.left * speed * Time.deltaTime);
                 if (transform.position.x < -10.0f) {
                     Destroy(gameObject);
@@ -30,7 +30,7 @@ namespace GreenTeam
         {
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
             if (collision.collider.CompareTag("Player") && destroyAfterCollision) {
-                Debug.Log("Destroy");
+                // Debug.Log("Destroy");
                 Destroy(gameObject);
                 
             }

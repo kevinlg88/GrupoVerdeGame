@@ -36,8 +36,7 @@ namespace GreenTeam
 
         bool isDead = false;
 
-        [SerializeField]
-        [Range(0,1)] float playerXPositionPercentage;
+        [Range(0,1)] public float playerXPositionPercentage;
 
         [Header("References")]
 
@@ -60,7 +59,8 @@ namespace GreenTeam
         }
         void Start()
         {
-            _animator.SetFloat("velx", 10);
+            _animator.SetFloat("velx", 0);
+            GameManager.inst.ON_START_GAME += () => _animator.SetFloat("velx", 10);
         }
         void Update()
         {
@@ -122,9 +122,9 @@ namespace GreenTeam
         {
             
             if(playerXPositionPercentage >= 1)
-                if (!GameManager.inst.getDeath()){
+                if (!GameManager.inst.death){
                     isDead = true;
-                    GameManager.inst.SetDeath();
+                    GameManager.inst.death = true;
                     gameObject.GetComponent<Animator>().SetTrigger("death");
                     PlayerSounds.inst.sounds[4].Play();
                     _animator.SetFloat("velx", 0);

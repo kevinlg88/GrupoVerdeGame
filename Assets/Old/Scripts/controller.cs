@@ -17,20 +17,20 @@ public class controller : MonoBehaviour
             gameObject.GetComponent<groundcheck>().setEstanoChao(false);
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, forcaDoPulo), ForceMode2D.Impulse);
         }
-        if (cortapulo && !gameObject.GetComponent<groundcheck>().getEstaNoChao()) {// se estiver no cortapulo e nao estiver no chao, cai mais rápido
+        if (cortapulo && !gameObject.GetComponent<groundcheck>().getEstaNoChao()) {// se estiver no cortapulo e nao estiver no chao, cai mais rï¿½pido
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -forcaDown), ForceMode2D.Impulse);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //verifica se colidiu com pilastra, se sim, seta morte como true, inicia animação e som de morte.
+        //verifica se colidiu com pilastra, se sim, seta morte como true, inicia animaï¿½ï¿½o e som de morte.
         if (collision.collider.CompareTag("pipe")) {
-            if (!GameManager.inst.getDeath()){
-                GameManager.inst.SetDeath();
-                gameObject.GetComponent<Animator>().SetTrigger("death");
-                PlayerSounds.inst.sounds[4].Play();
-            }
+            // if (!GameManager.inst.getDeath()){
+            //     GameManager.inst.SetDeath();
+            //     gameObject.GetComponent<Animator>().SetTrigger("death");
+            //     PlayerSounds.inst.sounds[4].Play();
+            // }
         }
     }
 

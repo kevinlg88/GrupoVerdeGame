@@ -40,7 +40,8 @@ namespace GreenTeam
             yield return new WaitUntil( () => CheckTimesTaped(10));
             Destroy(gameObject);
             playerController.animator.SetFloat("velx", 10);
-            Debug.Log("FOi");
+            playerController.playerXPositionPercentage -= Mathf.Lerp(0, 0.10f, 1f);
+            
         }
 
         bool CheckTimesTaped(float expectedTaps)
