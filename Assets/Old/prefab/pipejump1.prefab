@@ -326,3 +326,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  destroyAfterCollision: 0
+  makeItIntangibleAfterCollision: 1

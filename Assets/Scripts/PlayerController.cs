@@ -30,11 +30,15 @@ namespace GreenTeam
 
         [SerializeField] LayerMask groundLayer;
 
+        [SerializeField] float loseSpeedMultiplier = 1f;
+
         bool isOnGround = false;
 
         bool isSliding = false;
 
         bool isDead = false;
+
+        float nbJumps = 0;
 
         [Range(0,1)] public float playerXPositionPercentage;
 
@@ -64,9 +68,15 @@ namespace GreenTeam
         }
         void Update()
         {
+            if(playerXPositionPercentage < -0.6f)
+                playerXPositionPercentage = -0.6f;
+
+            playerXPositionPercentage += Time.deltaTime * loseSpeedMultiplier;
             inputs.UpdateInputs();
             IsOnGroundCheck();
             CheckIfLose();
+            
+
         }
         void FixedUpdate()
         {
@@ -79,11 +89,14 @@ namespace GreenTeam
 
         void Movement()
         {
+            if(!GameManager.inst.isGameRunning || GameManager.inst.isInFanInteraction)
+                return;
 
-            if (inputs.moveUp && isOnGround)
+            if (inputs.moveUp && isOnGround && nbJumps < 2)
             {
                 // isOnGround = false;
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                nbJumps++;
             }
 
             if (inputs.moveDown) {
@@ -100,6 +113,8 @@ namespace GreenTeam
             // RaycastHit2D hit2D = Physics2D.Raycast(rb.position - new Vector2(0f, 0.5f), Vector2.down, 0.2f, groundLayer);
             // isOnGround = hit2D;
             isOnGround = Physics2D.OverlapCircle(footPosition.position, 0.05f, groundLayer);
+            if(isOnGround)
+                nbJumps = 0;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -113,7 +128,8 @@ namespace GreenTeam
 
         void SetXPosition()
         {
-            float newXPosition = initialPosition.x + (losePosition.position.x * playerXPositionPercentage) ;
+            
+            float newXPosition = initialPosition.x + (losePosition.position.x * playerXPositionPercentage);
             // Debug.Log(newXPosition);
             transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
         }
