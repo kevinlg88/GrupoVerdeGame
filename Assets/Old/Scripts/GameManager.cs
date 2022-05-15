@@ -14,14 +14,20 @@ namespace GreenTeam
         private int score = 0;
         [SerializeField]
         private bool _isGameRunning = false;
+        private bool _isGamePaused = false;
         private bool _death = false;
         public bool isInFanInteraction = false;
 
+        [SerializeField] float initialDificult = 1f;
+        [SerializeField] float maxDificult = 2f;
+        float _currentDificult;
+        [SerializeField] float difcicultMultiplier = 1f;
         private float _travelledDinstance;
         [SerializeField]
         private float travelledDinstanceMultiplier = 1f;
         private float _likes;
-
+        public float initialObstaclesSpeed = 4f;
+        public float obstaclesSpeed = 4f;
         public float slowPercentage = 1f;
 
         [SerializeField]
@@ -54,6 +60,14 @@ namespace GreenTeam
 
                     if(ON_END_GAME != null) ON_END_GAME();
                 }
+            }
+        }
+        public bool isGamePaused{
+            get => _isGamePaused;
+
+            set 
+            {
+                _isGamePaused = value;
             }
         }
         public bool death { 
@@ -108,6 +122,10 @@ namespace GreenTeam
                 txtDistancia.text = String.Concat("Distancia Percorrida: ", MathF.Round(_travelledDinstance));
             } 
         }
+
+        public float currentDificult{
+            get => _currentDificult;
+        }
         #endregion
 
         void Awake()
@@ -126,16 +144,37 @@ namespace GreenTeam
 
         private void Start()
         {
+            _currentDificult = initialDificult;
             VerificaNovoHighScore();
             playerController = FindObjectOfType<PlayerController>();
+            obstaclesSpeed = initialObstaclesSpeed;
         }
 
         void Update()
         {
             if(!isGameRunning)
                 return;
+            travelledDinstance += Time.deltaTime * travelledDinstanceMultiplier * _currentDificult;//distancia percorrida pelo jogador
+            
+            if(isInFanInteraction)
+                obstaclesSpeed = 0f;
+            else
+                obstaclesSpeed = initialObstaclesSpeed * currentDificult;
 
-            travelledDinstance += Time.deltaTime * travelledDinstanceMultiplier;
+            UpdateDificult();
+
+            
+        }
+
+        void UpdateDificult()
+        {
+            _currentDificult += Time.deltaTime * (difcicultMultiplier/100);
+
+            if(!isInFanInteraction)
+                playerController.animator.SetFloat("velx", 1 * _currentDificult);
+            else
+                playerController.animator.SetFloat("velx", (1 * _currentDificult)*0.2f);
+
         }
 
         private void VerificaNovoHighScore() {

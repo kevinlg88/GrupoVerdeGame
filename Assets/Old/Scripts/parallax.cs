@@ -1,3 +1,4 @@
+using System.Timers;
 using UnityEngine;
 
 namespace GreenTeam
@@ -22,13 +23,12 @@ namespace GreenTeam
         
         void Update()
         {
-            if(GameManager.inst.slowPercentage == 1f)
-                vel = initialVel;
-            else
-                vel *= 0.9f;
-            //caso o player esteja se movendo, aplica o efeito de parallax no background1
+            
             if (GameManager.inst.isGameRunning) {
-                mshr.material.mainTextureOffset += new Vector2(vel * Time.deltaTime, 0);
+                if(GameManager.inst.isInFanInteraction)
+                    mshr.material.mainTextureOffset += new Vector2((vel*0.2f) * Time.deltaTime, 0);
+                else
+                    mshr.material.mainTextureOffset += new Vector2((vel*GameManager.inst.currentDificult) * Time.deltaTime, 0);
             }
         }
     }

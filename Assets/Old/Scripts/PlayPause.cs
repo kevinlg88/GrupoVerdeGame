@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using GreenTeam;
 
 public class PlayPause : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayPause : MonoBehaviour
     private Sprite[] playpause;
 
     public void playPause() {
-        //caso pressione o botão de pause, pausa/retorna ao jogo com troca de sprite do botão.
+        //caso pressione o botï¿½o de pause, pausa/retorna ao jogo com troca de sprite do botï¿½o.
         if (pausado)
         {
             Time.timeScale = 1.0f;
@@ -22,6 +23,6 @@ public class PlayPause : MonoBehaviour
             pausado = true;
             gameObject.GetComponent<Image>().sprite = playpause[1];
         }
-
+        GameManager.inst.isGamePaused = pausado;
     }
 }

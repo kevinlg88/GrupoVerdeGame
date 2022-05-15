@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,17 @@ namespace GreenTeam
 {
     public class MovingObstacle : MonoBehaviour
     {
-        public float speed;
-
+        // public float speed;
+        [SerializeField] bool usePool = true;
         [SerializeField] bool destroyAfterCollision = true;
         [SerializeField] bool makeItIntangibleAfterCollision = false;
-        [SerializeField] bool aaaa = true;//destruir se tiver interagindo com fan
 
+        private Action<MovingObstacle> RELEASE_ACTION;
 
+        public void Init(Action<MovingObstacle> releaseAction)
+        {
+            RELEASE_ACTION = releaseAction;
+        }
 
         void Start()
         {
@@ -22,29 +27,49 @@ namespace GreenTeam
         
         void Update()
         {
-            if (!GameManager.inst.death && GameManager.inst.isGameRunning) {
-                transform.position = transform.position + ( Vector3.left * speed * Time.deltaTime);
-                if (transform.position.x < -10.0f) {
-                    Destroy(gameObject);
-                }
-            }
+            if (!GameManager.inst.isGameRunning || GameManager.inst.isGamePaused)
+                return;
 
-            if(aaaa && GameManager.inst.isInFanInteraction)
-                Destroy(gameObject);
-
+            transform.position = transform.position + ( Vector3.left * GameManager.inst.obstaclesSpeed * Time.deltaTime);
+            
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        public virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
+            // Debug.Log(collision.gameObject.name);
+            // RELEASE_ACTION(this);
+            if (collision.collider.CompareTag("Wall"))
+                if(usePool)
+                    RELEASE_ACTION(this);
+                else
+                    Destroy(gameObject);
+
             if (collision.collider.CompareTag("Player")) {
                 if(destroyAfterCollision)
-                    Destroy(gameObject);
+                    if(usePool)
+                        RELEASE_ACTION(this);
+                    else
+                        Destroy(gameObject);
+                    
                 else if(makeItIntangibleAfterCollision)
                 {
                     GetComponent<Collider2D>().isTrigger = true;
                     GetComponent<SpriteRenderer>().color = new Color(0f,0f,0f,0.5f);
                 }
+            }
+        }
+
+        public virtual void OnTriggerEnter2D(Collider2D other)
+        {
+            if(usePool)
+            {
+                if (other.CompareTag("Wall")) RELEASE_ACTION(this);
+
+            }
+            else
+            {
+                if (other.CompareTag("Wall")) Destroy(gameObject);
+
             }
         }
     }

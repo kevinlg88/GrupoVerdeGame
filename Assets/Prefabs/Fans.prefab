@@ -158,10 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c153d08ad1d645478131cecd7aa4a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  usePool: 0
   destroyAfterCollision: 0
   makeItIntangibleAfterCollision: 0
-  aaaa: 0
 --- !u!114 &1277105243671857443
 MonoBehaviour:
   m_ObjectHideFlags: 0

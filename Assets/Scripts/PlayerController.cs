@@ -16,9 +16,10 @@ namespace GreenTeam
 
             public void UpdateInputs()
             {
-                moveUp = Input.GetMouseButton(0);
+                moveUp = Input.GetMouseButtonDown(0);
                 tap = Input.GetMouseButtonDown(0);
-                moveDown = Input.GetMouseButton(1);
+                moveDown = Input.GetMouseButtonDown(1);
+                // Debug.Log(Input.GetMouseButtonDown(0));
             }
 
         }
@@ -64,17 +65,21 @@ namespace GreenTeam
         void Start()
         {
             _animator.SetFloat("velx", 0);
-            GameManager.inst.ON_START_GAME += () => _animator.SetFloat("velx", 10);
+            GameManager.inst.ON_START_GAME += () => _animator.SetFloat("velx", 1);
         }
         void Update()
         {
+            if(!GameManager.inst.isGameRunning || GameManager.inst.isGamePaused)
+                return;
+                
             if(playerXPositionPercentage < -0.6f)
                 playerXPositionPercentage = -0.6f;
 
             playerXPositionPercentage += Time.deltaTime * loseSpeedMultiplier;
-            inputs.UpdateInputs();
             IsOnGroundCheck();
             CheckIfLose();
+            inputs.UpdateInputs();
+            Movement();
             
 
         }
@@ -84,7 +89,6 @@ namespace GreenTeam
             return;
             
             SetXPosition();
-            Movement();
         }
 
         void Movement()
@@ -92,11 +96,18 @@ namespace GreenTeam
             if(!GameManager.inst.isGameRunning || GameManager.inst.isInFanInteraction)
                 return;
 
-            if (inputs.moveUp && isOnGround && nbJumps < 2)
+            if (inputs.moveUp)
             {
-                // isOnGround = false;
-                rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-                nbJumps++;
+                if(isOnGround)
+                {
+                    rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    nbJumps++;
+                }
+                else if(nbJumps < 1)
+                {
+                    rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    nbJumps++;
+                }
             }
 
             if (inputs.moveDown) {
@@ -128,7 +139,9 @@ namespace GreenTeam
 
         void SetXPosition()
         {
-            
+            if(!GameManager.inst.isGameRunning)
+                return;
+
             float newXPosition = initialPosition.x + (losePosition.position.x * playerXPositionPercentage);
             // Debug.Log(newXPosition);
             transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
