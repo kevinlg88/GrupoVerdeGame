@@ -83,6 +83,8 @@ namespace GreenTeam
         {
             _animator.SetFloat("velx", 0);
             GameManager.inst.ON_START_GAME += () => _animator.SetFloat("velx", 1);
+            GameManager.inst.ON_START_GAME += () => _animator.SetBool("isGameRuning", true);
+            GameManager.inst.ON_END_GAME += () => _animator.SetBool("isGameRuning", false);
         }
         void Update()
         {
@@ -98,13 +100,13 @@ namespace GreenTeam
             inputs.UpdateInputs();
             Movement();
             
-
+            isSliding = animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"); //if is sliding
         }
         void FixedUpdate()
         {
             if(isDead)
             return;
-            
+            // _animator.SetFloat("vely", gameObject.GetComponent<Rigidbody2D>().velocity.y);
             SetXPosition();
         }
 
@@ -143,6 +145,11 @@ namespace GreenTeam
             // isOnGround = hit2D;
             isOnGround = Physics2D.OverlapCircle(footPosition.position, 0.05f, groundLayer);
             if(isOnGround)
+                _animator.SetBool("estanochao", true);
+            else
+                _animator.SetBool("estanochao", false);
+
+            if(isOnGround)
                 nbJumps = 0;
         }
 
@@ -150,7 +157,6 @@ namespace GreenTeam
         {
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
             if (collision.collider.CompareTag("MovingObstacles")) {
-                
                 playerXPositionPercentage += Mathf.Lerp(0, percentageToLost, 1f);
             }
         }
