@@ -41,7 +41,6 @@ namespace GreenTeam
             isRunning = true;
             // GetComponent<MovingObstacle>().speed = 0;
 
-            GameManager.inst.slowPercentage = 0.5f;
             GameManager.inst.isInFanInteraction = true;
             // playerController.animator.SetFloat("velx", 0.5f);
             uiObject.GetComponent<Text>().text = "Toque varias vezes na tela";
@@ -54,7 +53,6 @@ namespace GreenTeam
 
             GameManager.inst.isInFanInteraction = false;
             uiObject.GetComponent<Text>().text = "";
-            GameManager.inst.slowPercentage = 1f;
             // Destroy(gameObject);
             // playerController.animator.SetFloat("velx", 10);
             GameManager.inst.likes += 5;

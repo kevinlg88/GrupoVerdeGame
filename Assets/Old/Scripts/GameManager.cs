@@ -18,17 +18,25 @@ namespace GreenTeam
         private bool _death = false;
         public bool isInFanInteraction = false;
 
+        [Tooltip("Dificuldade inicial do jogo. 1f = 100%")]
         [SerializeField] float initialDificult = 1f;
+
+        [Tooltip("Dificuldade maxima do jogo. 1f = 200%")]
         [SerializeField] float maxDificult = 2f;
         float _currentDificult;
+
+        [Tooltip("Define o quão rapido o a dificuldade vai aumentar")]
         [SerializeField] float difcicultMultiplier = 1f;
         private float _travelledDinstance;
-        [SerializeField]
+        
         private float travelledDinstanceMultiplier = 1f;
         private float _likes;
+
+        [Tooltip("Velocidade inicial dos obstaculos")]
         public float initialObstaclesSpeed = 4f;
+
+        [Tooltip("Velocidade atual dos obstaculos")]
         public float obstaclesSpeed = 4f;
-        public float slowPercentage = 1f;
 
         [SerializeField]
         private Text txtScore;

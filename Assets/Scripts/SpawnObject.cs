@@ -11,6 +11,9 @@ namespace GreenTeam
         public float minTime = 0;
         private float time;//current time
         private float spawnTime;//The time to spawn the object
+        
+        [Tooltip("Se usa o blocos de prefabs")]
+        [SerializeField] private bool useBlocks;
 
         void Start()
         {
@@ -24,13 +27,12 @@ namespace GreenTeam
 
             //Counts up
             time += Time.deltaTime;
+
+
             //Check if its the right time to spawn the object
-            int index = Random.Range(0, objects.Count);
-            Vector3 position = new Vector3(transform.position.x, Random.Range(4.15f, 10.5f), 0);
-            Debug.Log(index);
             if (time >= spawnTime) {
                 if(!GameManager.inst.isInFanInteraction)
-                    Instantiate(objects[index], position, transform.rotation);
+                    Spawn();
 
                 SetRandomTime();
                 time = 0;
@@ -41,6 +43,18 @@ namespace GreenTeam
         {
             spawnTime = Random.Range (minTime, maxTime);
             // Debug.Log ("Next object spawn in " + spawnTime + " seconds.");
+        }
+
+        void Spawn()
+        {
+            int index = Random.Range(0, objects.Count);
+            // Debug.Log(index);
+
+            Vector3 position = new Vector3(transform.position.x, Random.Range(4.15f, 10.5f), 0);
+            if(useBlocks)
+                Instantiate(objects[index]);
+            else
+                Instantiate(objects[index], position, transform.rotation);
         }
     }
 }
