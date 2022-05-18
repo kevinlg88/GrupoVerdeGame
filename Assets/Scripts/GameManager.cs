@@ -17,6 +17,7 @@ namespace GreenTeam
         private bool _isGamePaused = false;
         private bool _death = false;
         public bool isInFanInteraction = false;
+        public bool isInSineEffect = false;
 
         [Tooltip("Dificuldade inicial do jogo. 1f = 100%")]
         [SerializeField] float initialDificult = 1f;
@@ -49,11 +50,14 @@ namespace GreenTeam
         [SerializeField]
         private Text txtLikes;
         [SerializeField]
+        private Text txtLikesShop;
+        [SerializeField]
         private GameObject[] hidenPlay;
 
         [SerializeField] GameObject MenuCanvas;
         [SerializeField] GameObject PauseCanvas;
         [SerializeField] GameObject RunningCanvas;
+        public GameObject x2Likes;
         [SerializeField] GameObject GameOverCanvas;
         [SerializeField] GameObject ShopCanvas;
 
@@ -144,7 +148,8 @@ namespace GreenTeam
             set 
             {
                 _likes = value;
-                txtLikes.text = String.Concat("Likes: ", _likes);
+                // txtLikes.text = String.Concat("Likes: ", _likes);
+                txtLikes.text = _likes.ToString();
             }
         }
         private float travelledDinstance{ 
@@ -185,7 +190,12 @@ namespace GreenTeam
             {
                 PlayerPrefs.SetInt("Likes", _likes);
             }
-            txtLikes.text = String.Concat("Likes :", totalLikes);
+
+            
+            // txtLikes.text = String.Concat("Likes :", totalLikes);
+            txtLikes.text = totalLikes.ToString();
+            txtLikesShop.text = totalLikes.ToString();
+            
             _currentDificult = initialDificult;
             VerificaNovoHighScore();
             playerController = FindObjectOfType<PlayerController>();
@@ -244,7 +254,10 @@ namespace GreenTeam
             MenuCanvas.SetActive(false);
             GameOverCanvas.SetActive(false);
             RunningCanvas.SetActive(true);
-            txtLikes.text = String.Concat("Likes: ",_likes);
+            // txtLikes.text = String.Concat("Likes: ",_likes);
+            txtLikes.text = _likes.ToString();
+            
+            
 
             _isGameRunning = true;
             if(ON_START_GAME != null) ON_START_GAME();

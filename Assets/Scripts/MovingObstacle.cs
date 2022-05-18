@@ -41,7 +41,10 @@ namespace GreenTeam
             // RELEASE_ACTION(this);
 
             if(isALike)
-                GameManager.inst.likes+=1;
+                if(GameManager.inst.isInSineEffect)
+                    GameManager.inst.likes+=2;
+                else
+                    GameManager.inst.likes++;
 
             if (collision.collider.CompareTag("Wall"))
                 if(usePool)

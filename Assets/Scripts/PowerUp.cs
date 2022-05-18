@@ -59,8 +59,14 @@ namespace GreenTeam
         }
         IEnumerator NotificationRoutine()
         {
-
-            yield return null;
+            GameManager.inst.isInSineEffect = true;
+            GameManager.inst.x2Likes.SetActive(true);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            yield return new WaitForSeconds(15);
+            GameManager.inst.isInSineEffect = false;
+            GameManager.inst.x2Likes.SetActive(false);
+            Destroy(gameObject);
         }
         IEnumerator NewPhoneRoutine()
         {

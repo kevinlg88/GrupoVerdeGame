@@ -108,7 +108,9 @@ namespace GreenTeam
         {
             if(isDead)
             return;
-            // _animator.SetFloat("vely", gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+            _animator.SetFloat("vely", gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            
             SetXPosition();
         }
 
