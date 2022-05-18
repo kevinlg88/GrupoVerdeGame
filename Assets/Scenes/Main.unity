@@ -1405,8 +1405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 311.6577, y: -495.01068}
-  m_SizeDelta: {x: 546.3098, y: 100}
+  m_AnchoredPosition: {x: 311.6577, y: -464.50812}
+  m_SizeDelta: {x: 395.2498, y: 73.855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &247016223
 MonoBehaviour:
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 8.51, y: 13.21}
+  m_EffectDistance: {x: 2.4, y: 8.28}
   m_UseGraphicAlpha: 1
 --- !u!114 &279642240
 MonoBehaviour:
@@ -2259,7 +2259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 397.52112, y: -142}
+  m_AnchoredPosition: {x: 408.0711, y: -142}
   m_SizeDelta: {x: 12.199951, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517626558
@@ -2509,8 +2509,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.64
-  m_fontSizeBase: 55.64
+  m_fontSize: 52.8
+  m_fontSizeBase: 52.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3026,7 +3026,7 @@ MonoBehaviour:
     m_Top: 142
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 53.8
+  m_Spacing: 11.6
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -4275,7 +4275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 8.51, y: 13.21}
+  m_EffectDistance: {x: 2.4, y: 8.28}
   m_UseGraphicAlpha: 1
 --- !u!114 &909382256
 MonoBehaviour:
@@ -4827,7 +4827,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 640, y: 0}
-  m_SizeDelta: {x: 1564.3281, y: 136.1961}
+  m_SizeDelta: {x: 1478.1431, y: 136.1961}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1016296029
 MonoBehaviour:
@@ -5264,7 +5264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 8.51, y: 13.21}
+  m_EffectDistance: {x: 2.4, y: 8.28}
   m_UseGraphicAlpha: 1
 --- !u!114 &1084564177
 MonoBehaviour:
@@ -6049,7 +6049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 311.6577, y: -222.50534}
+  m_AnchoredPosition: {x: 311.6577, y: -213.79028}
   m_SizeDelta: {x: 400.9047, y: 400.9015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335317101
@@ -6318,8 +6318,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 999.92114, y: -142}
-  m_SizeDelta: {x: 623.3154, y: 575.0107}
+  m_AnchoredPosition: {x: 989.3711, y: -142}
+  m_SizeDelta: {x: 623.3154, y: 531.4356}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1394530440
 MonoBehaviour:
@@ -6360,7 +6360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 8.51, y: 13.21}
+  m_EffectDistance: {x: -4.3, y: 8.39}
   m_UseGraphicAlpha: 1
 --- !u!114 &1394530442
 MonoBehaviour:
@@ -7827,7 +7827,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 273.1549, y: -50}
+  m_AnchoredPosition: {x: 197.6249, y: -36.9275}
   m_SizeDelta: {x: 311.2611, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765647693
@@ -7877,8 +7877,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.73
-  m_fontSizeBase: 63.73
+  m_fontSize: 54.96
+  m_fontSizeBase: 54.96
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8069,7 +8069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 8.51, y: 13.21}
+  m_EffectDistance: {x: 2.4, y: 8.28}
   m_UseGraphicAlpha: 1
 --- !u!114 &1793137442
 MonoBehaviour:
@@ -8863,7 +8863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1117.8632, y: -68.09805}
+  m_AnchoredPosition: {x: 1074.7706, y: -68.09805}
   m_SizeDelta: {x: 79.9675, y: 72.6073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982001252
@@ -9380,7 +9380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 8.51, y: 13.21}
+  m_EffectDistance: {x: 2.4, y: 6.96}
   m_UseGraphicAlpha: 1
 --- !u!114 &2088863709
 MonoBehaviour:
