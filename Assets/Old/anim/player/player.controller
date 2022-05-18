@@ -254,7 +254,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: estanochao
     m_EventTreshold: 0
-  - m_ConditionMode: 4
+  - m_ConditionMode: 3
     m_ConditionEvent: vely
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}

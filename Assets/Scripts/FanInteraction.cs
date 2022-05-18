@@ -8,6 +8,8 @@ namespace GreenTeam
 {
     public class FanInteraction : MonoBehaviour
     {
+        [Tooltip("Valor q o player vai para frente apos interagir com um fan")]
+        public float dashValue = 0.2f;
         bool isRunning;
         PlayerController playerController;
 
@@ -59,7 +61,7 @@ namespace GreenTeam
 
             // GetComponent<MovingObstacle>().speed = 4;
 
-            playerController.playerXPositionPercentage -= Mathf.Lerp(0, 0.30f, 1f);
+            playerController.playerXPositionPercentage -= Mathf.Lerp(0, dashValue, 1f);
         }
 
         bool CheckTimesTaped(float expectedTaps)

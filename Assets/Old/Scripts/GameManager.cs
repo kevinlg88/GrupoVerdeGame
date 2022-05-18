@@ -38,6 +38,9 @@ namespace GreenTeam
         [Tooltip("Velocidade atual dos obstaculos")]
         public float obstaclesSpeed = 4f;
 
+        // [Tooltip("Valor do dash do Coffe")]
+        // [SerializeField]public float dashValue = 0.2f;
+
         [SerializeField]
         private Text txtScore;
         [SerializeField]
@@ -216,9 +219,9 @@ namespace GreenTeam
             SceneManager.LoadScene("Main");
         }
 
-        public void SlowEverything()//para quando esta na interaacao com o fan
+        public void DashPlayer(float dashValue)
         {
-            
+            playerController.playerXPositionPercentage += Mathf.Lerp(0, dashValue, 1f);
         }
 
         // public bool getDeath()
