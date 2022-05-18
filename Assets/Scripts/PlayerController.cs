@@ -17,31 +17,59 @@ namespace GreenTeam
 
             public void UpdateInputs()
             {
-                if(Input.GetMouseButtonDown(0) || TouchInput.SwipeUp())
+
+#if UNITY_EDITOR || UNITY_WEBGL
+                PCInputs();
+#else
+                MobileInputs();
+#endif
+            }
+
+            private void PCInputs()
+            {
+                if (Input.GetMouseButtonDown(0))
                     moveUp = true;
                 else
                     moveUp = false;
 
-
-                if(Input.GetMouseButtonDown(0) || TouchInput.Tap())
+                if (Input.GetMouseButtonDown(0))
                     tap = true;
                 else
                     tap = false;
 
-                if(Input.GetMouseButtonDown(1) || TouchInput.SwipeDown())
+                if (Input.GetMouseButtonDown(1))
                     moveDown = true;
                 else
                     moveDown = false;
-
-                // Debug.Log(Input.GetMouseButtonDown(0));
             }
 
+            private void MobileInputs()
+            {
+                TouchInput.ProcessTouches();
+
+                if (TouchInput.SwipeUp())
+                    moveUp = true;
+                else
+                    moveUp = false;
+
+                if (TouchInput.Tap())
+                    tap = true;
+                else
+                    tap = false;
+
+                if (TouchInput.SwipeDown())
+                    moveDown = true;
+                else
+                    moveDown = false;
+            }
         }
+
         public Inputs inputs = new Inputs();
         #endregion
         [Header("Configs")]
         public float jumpForce;
         public float getDownForce;
+        [SerializeField] bool canDoubleJump = false;
 
         [Tooltip("Porcentagem que o player irá perder ao colidir com um obstaculo")]
         [SerializeField] float _percentageToLost = 0.05f;
@@ -60,7 +88,7 @@ namespace GreenTeam
 
         float nbJumps = 0;
 
-        [Range(0,1)] public float playerXPositionPercentage;
+        [Range(0, 1)] public float playerXPositionPercentage;
 
         [Header("References")]
 
@@ -71,9 +99,9 @@ namespace GreenTeam
 
         Rigidbody2D rb;
 
-        [SerializeField]Animator _animator;
+        [SerializeField] Animator _animator;
 
-        public Animator animator{ get => _animator; }
+        public Animator animator { get => _animator; }
 
         void Awake()
         {
@@ -88,12 +116,13 @@ namespace GreenTeam
             GameManager.inst.ON_START_GAME += () => _animator.SetBool("isGameRuning", true);
             GameManager.inst.ON_END_GAME += () => _animator.SetBool("isGameRuning", false);
         }
+
         void Update()
         {
-            if(!GameManager.inst.isGameRunning || GameManager.inst.isGamePaused)
+            if (!GameManager.inst.isGameRunning || GameManager.inst.isGamePaused)
                 return;
-                
-            if(playerXPositionPercentage < -0.6f)
+
+            if (playerXPositionPercentage < -0.6f)
                 playerXPositionPercentage = -0.6f;
 
             playerXPositionPercentage += Time.deltaTime * loseSpeedMultiplier;
@@ -101,73 +130,74 @@ namespace GreenTeam
             CheckIfLose();
             inputs.UpdateInputs();
             Movement();
-            
+
             isSliding = animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"); //if is sliding
         }
+
         void FixedUpdate()
         {
-            if(isDead)
-            return;
+            if (isDead) return;
 
-            _animator.SetFloat("vely", gameObject.GetComponent<Rigidbody2D>().velocity.y);
-            
+            _animator.SetFloat("vely", rb.velocity.y);
+
             SetXPosition();
         }
 
+        private bool CanDoubleJump() => nbJumps < 1 && canDoubleJump;
+
         void Movement()
         {
-            if(!GameManager.inst.isGameRunning || GameManager.inst.isInFanInteraction)
+            if (!GameManager.inst.isGameRunning || GameManager.inst.isInFanInteraction)
                 return;
 
             if (inputs.moveUp)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
-                if(isOnGround)
+                if (isOnGround || CanDoubleJump())
                 {
-                    rb.AddForce(new Vector2(0f, jumpForce*45), ForceMode2D.Force);
-                    nbJumps++;
-                }
-                else if(nbJumps < 1)
-                {
-                    rb.AddForce(new Vector2(0f, jumpForce*45), ForceMode2D.Force);
+                    rb.AddForce(new Vector2(0f, jumpForce * 45), ForceMode2D.Force);
                     nbJumps++;
                 }
             }
 
-            if (inputs.moveDown) {
-                if(!isOnGround)
+            if (inputs.moveDown)
+            {
+                if (!isOnGround)
+                {
                     rb.AddForce(new Vector2(0f, -getDownForce), ForceMode2D.Impulse);
-                else if(!isSliding)
-                    _animator.SetTrigger("slide");
-
+                    // else if (!isSliding)
+                }
+                _animator.SetTrigger("slide");
             }
         }
+
 
         void IsOnGroundCheck()
         {
             // RaycastHit2D hit2D = Physics2D.Raycast(rb.position - new Vector2(0f, 0.5f), Vector2.down, 0.2f, groundLayer);
             // isOnGround = hit2D;
             isOnGround = Physics2D.OverlapCircle(footPosition.position, 0.05f, groundLayer);
-            if(isOnGround)
+            if (isOnGround)
                 _animator.SetBool("estanochao", true);
             else
                 _animator.SetBool("estanochao", false);
 
-            if(isOnGround)
+            if (isOnGround)
                 nbJumps = 0;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
-            if (collision.collider.CompareTag("MovingObstacles")) {
+            if (collision.collider.CompareTag("MovingObstacles"))
+            {
                 playerXPositionPercentage += Mathf.Lerp(0, _percentageToLost, 1f);
             }
         }
 
         void SetXPosition()
         {
-            if(!GameManager.inst.isGameRunning)
+            if (!GameManager.inst.isGameRunning)
                 return;
 
             float newXPosition = initialPosition.x + (losePosition.position.x * playerXPositionPercentage);
@@ -177,9 +207,10 @@ namespace GreenTeam
 
         void CheckIfLose()
         {
-            
-            if(playerXPositionPercentage >= 1)
-                if (!GameManager.inst.death){
+
+            if (playerXPositionPercentage >= 1)
+                if (!GameManager.inst.death)
+                {
                     isDead = true;
                     GameManager.inst.death = true;
                     animator.SetTrigger("death");
@@ -188,7 +219,8 @@ namespace GreenTeam
                 }
         }
 
-        public void playRun1() {
+        public void playRun1()
+        {
             PlayerSounds.inst.sounds[0].Play();
         }
 
@@ -207,7 +239,8 @@ namespace GreenTeam
             PlayerSounds.inst.sounds[2].Play();
         }
 
-        public void SlideINIT() {
+        public void SlideINIT()
+        {
             isSliding = true;
         }
         public void SlideEnd()
