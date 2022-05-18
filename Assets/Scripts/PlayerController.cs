@@ -44,7 +44,9 @@ namespace GreenTeam
         public float getDownForce;
 
         [Tooltip("Porcentagem que o player irá perder ao colidir com um obstaculo")]
-        [SerializeField] float percentageToLost = 0.05f;
+        [SerializeField] float _percentageToLost = 0.05f;
+
+        public float percentageToLost { get => _percentageToLost; }
 
         [SerializeField] LayerMask groundLayer;
 
@@ -69,7 +71,7 @@ namespace GreenTeam
 
         Rigidbody2D rb;
 
-        Animator _animator;
+        [SerializeField]Animator _animator;
 
         public Animator animator{ get => _animator; }
 
@@ -77,7 +79,7 @@ namespace GreenTeam
         {
             initialPosition = transform.position;
             rb = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
+            // _animator = GetComponent<Animator>();
         }
         void Start()
         {
@@ -157,7 +159,7 @@ namespace GreenTeam
         {
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
             if (collision.collider.CompareTag("MovingObstacles")) {
-                playerXPositionPercentage += Mathf.Lerp(0, percentageToLost, 1f);
+                playerXPositionPercentage += Mathf.Lerp(0, _percentageToLost, 1f);
             }
         }
 
