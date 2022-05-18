@@ -50,6 +50,12 @@ namespace GreenTeam
         [SerializeField]
         private GameObject[] hidenPlay;
 
+        [SerializeField] GameObject MenuCanvas;
+        [SerializeField] GameObject PauseCanvas;
+        [SerializeField] GameObject RunningCanvas;
+        [SerializeField] GameObject GameOverCanvas;
+        [SerializeField] GameObject ShopCanvas;
+
         PlayerController playerController;
 
         public static GameManager inst;
@@ -104,11 +110,14 @@ namespace GreenTeam
                     _death = value;
                     isGameRunning = false;
 
-                    hidenPlay[1].SetActive(true);
-                    hidenPlay[1].GetComponent<Text>().text = "Game Over";
-                    hidenPlay[2].SetActive(true);
-                    hidenPlay[3].SetActive(true);
-                    hidenPlay[4].SetActive(false);
+                    // hidenPlay[1].SetActive(true);
+                    // hidenPlay[1].GetComponent<Text>().text = "Game Over";
+                    // hidenPlay[2].SetActive(true);
+                    // hidenPlay[3].SetActive(true);
+                    // hidenPlay[4].SetActive(false);
+
+                    RunningCanvas.SetActive(false);
+                    GameOverCanvas.SetActive(true);
                 }
                 else
                 {
@@ -205,17 +214,22 @@ namespace GreenTeam
 
         public void StartGame() {
             //seta quais itens do menu ir� aparecer ao iniciar e init = true
-            hidenPlay[0].SetActive(false);
-            hidenPlay[1].SetActive(false);
-            hidenPlay[2].SetActive(false);
-            hidenPlay[4].SetActive(true);
+            // hidenPlay[0].SetActive(false);
+            // hidenPlay[1].SetActive(false);
+            // hidenPlay[2].SetActive(false);
+            // hidenPlay[4].SetActive(true);
+
+            MenuCanvas.SetActive(false);
+            GameOverCanvas.SetActive(false);
+            RunningCanvas.SetActive(true);
+            
             _isGameRunning = true;
             if(ON_START_GAME != null) ON_START_GAME();
         }
 
         public void loadScene() {
             //recarrega a cena(play again)
-            hidenPlay[3].GetComponent<Button>().interactable = false;
+            // hidenPlay[3].GetComponent<Button>().interactable = false;
             SceneManager.LoadScene("Main");
         }
 
