@@ -22,8 +22,8 @@ MonoBehaviour:
       m_Sprite: {fileID: -3286828189420080877, guid: c8302ca9000c260408b4774473f5afea, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -3286828189420080877, guid: c8302ca9000c260408b4774473f5afea, type: 3}
-    - m_Name: Osca
-      m_Hash: -1058985772
+    - m_Name: Oscar
+      m_Hash: -310966152
       m_Sprite: {fileID: -4620412821780298670, guid: f476f10cfc2d8584aad8367e34dd7114, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -4620412821780298670, guid: f476f10cfc2d8584aad8367e34dd7114, type: 3}
