@@ -214,32 +214,32 @@ namespace GreenTeam
                     isDead = true;
                     GameManager.inst.death = true;
                     animator.SetTrigger("death");
-                    PlayerSounds.inst.sounds[4].Play();
+                    GameManager.inst.audioManager.death.Play();
                     _animator.SetFloat("velx", 0);
                 }
         }
 
         public void playRun1()
         {
-            PlayerSounds.inst.sounds[0].Play();
+            GameManager.inst.audioManager.run.Play();
         }
 
         public void playRun2()
         {
-            PlayerSounds.inst.sounds[1].Play();
+
         }
 
         public void playJump()
         {
-            PlayerSounds.inst.sounds[3].Play();
+            GameManager.inst.audioManager.jump.Play();
         }
 
         public void playSlide()
         {
-            PlayerSounds.inst.sounds[2].Play();
+            GameManager.inst.audioManager.slide.Play();
         }
 
-        public void SlideINIT()
+        public void SlideStart()
         {
             isSliding = true;
         }
