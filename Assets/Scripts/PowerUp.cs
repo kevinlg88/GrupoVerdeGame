@@ -30,9 +30,12 @@ namespace GreenTeam
 
         void OnCollisionEnter2D(Collision2D other)
         {
+            if (other.gameObject.CompareTag("Wall"))
+                Destroy(gameObject);
+                
             if(!other.gameObject.CompareTag("Player"))
                 return;
-            
+
             if(type == PowerUpType.Coffe)
             {
                 StartCoroutine(nameof(CoffeRoutine));
@@ -45,11 +48,12 @@ namespace GreenTeam
             {
                 StartCoroutine(nameof(NewPhoneRoutine));
             }
+
         }
 
         IEnumerator CoffeRoutine()
         {
-            GameManager.inst.DashPlayer(dashValue);
+            GameManager.inst.DashPlayer(-dashValue);
             yield return null;
         }
         IEnumerator NotificationRoutine()
