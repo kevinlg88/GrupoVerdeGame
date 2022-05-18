@@ -61,6 +61,7 @@ namespace GreenTeam
         [SerializeField] GameObject GameOverCanvas;
         [SerializeField] GameObject ShopCanvas;
 
+        public AudioManager audioManager;
         PlayerController playerController;
 
         public static GameManager inst;
@@ -220,7 +221,8 @@ namespace GreenTeam
 
         void UpdateDificult()
         {
-            _currentDificult += Time.deltaTime * (difcicultMultiplier/100);
+            if(_currentDificult < maxDificult)
+                _currentDificult += Time.deltaTime * (difcicultMultiplier/100);
 
             if(!isInFanInteraction)
                 playerController.animator.SetFloat("velx", 1 * _currentDificult);
