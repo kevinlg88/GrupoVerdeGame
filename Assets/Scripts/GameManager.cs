@@ -30,7 +30,8 @@ namespace GreenTeam
         private float _travelledDinstance;
         
         private float travelledDinstanceMultiplier = 1f;
-        private float _likes;
+        private int _likes;
+        private int totalLikes;
 
         [Tooltip("Velocidade inicial dos obstaculos")]
         public float initialObstaclesSpeed = 4f;
@@ -107,6 +108,17 @@ namespace GreenTeam
                     }
                     VerificaNovoHighScore();
 
+                    if (PlayerPrefs.HasKey("Likes"))
+                    {
+                        totalLikes = PlayerPrefs.GetInt("Likes");
+                        totalLikes += _likes;
+                        PlayerPrefs.SetInt("Likes", totalLikes);
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("Likes", _likes);
+                    }
+
                     _death = value;
                     isGameRunning = false;
 
@@ -125,7 +137,7 @@ namespace GreenTeam
                 }
             }
         }
-        public float likes 
+        public int likes 
         {
             get => _likes;
 
@@ -164,6 +176,16 @@ namespace GreenTeam
 
         private void Start()
         {
+            if (PlayerPrefs.HasKey("Likes"))
+            {
+                totalLikes = PlayerPrefs.GetInt("Likes");
+                PlayerPrefs.SetInt("Likes", totalLikes);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Likes", _likes);
+            }
+            txtLikes.text = String.Concat("Likes :", totalLikes);
             _currentDificult = initialDificult;
             VerificaNovoHighScore();
             playerController = FindObjectOfType<PlayerController>();
@@ -222,7 +244,8 @@ namespace GreenTeam
             MenuCanvas.SetActive(false);
             GameOverCanvas.SetActive(false);
             RunningCanvas.SetActive(true);
-            
+            txtLikes.text = String.Concat("Likes: ",_likes);
+
             _isGameRunning = true;
             if(ON_START_GAME != null) ON_START_GAME();
         }

@@ -180,7 +180,7 @@ namespace GreenTeam
                 if (!GameManager.inst.death){
                     isDead = true;
                     GameManager.inst.death = true;
-                    gameObject.GetComponent<Animator>().SetTrigger("death");
+                    animator.SetTrigger("death");
                     PlayerSounds.inst.sounds[4].Play();
                     _animator.SetFloat("velx", 0);
                 }
