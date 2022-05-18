@@ -32,7 +32,7 @@ namespace GreenTeam
         {
             if (other.gameObject.CompareTag("Wall"))
                 Destroy(gameObject);
-                
+
             if(!other.gameObject.CompareTag("Player"))
                 return;
 
@@ -54,6 +54,7 @@ namespace GreenTeam
         IEnumerator CoffeRoutine()
         {
             GameManager.inst.DashPlayer(-dashValue);
+            Destroy(gameObject);
             yield return null;
         }
         IEnumerator NotificationRoutine()

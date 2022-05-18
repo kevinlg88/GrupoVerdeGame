@@ -11,6 +11,7 @@ namespace GreenTeam
         [SerializeField] bool usePool = true;
         [SerializeField] bool destroyAfterCollision = true;
         [SerializeField] bool makeItIntangibleAfterCollision = false;
+        [SerializeField] bool isALike = false;
 
         private Action<MovingObstacle> RELEASE_ACTION;
 
@@ -38,6 +39,10 @@ namespace GreenTeam
         {
             // Debug.Log(collision.gameObject.name);
             // RELEASE_ACTION(this);
+
+            if(isALike)
+                GameManager.inst.likes+=1;
+
             if (collision.collider.CompareTag("Wall"))
                 if(usePool)
                     RELEASE_ACTION(this);
