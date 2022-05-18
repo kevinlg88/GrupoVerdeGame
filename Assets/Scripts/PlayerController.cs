@@ -152,9 +152,9 @@ namespace GreenTeam
 
             if (inputs.moveUp)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
                 if (isOnGround || CanDoubleJump())
                 {
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(new Vector2(0f, jumpForce * 45), ForceMode2D.Force);
                     nbJumps++;
                 }
