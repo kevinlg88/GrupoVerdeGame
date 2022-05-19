@@ -12,7 +12,7 @@ namespace GreenTeam
         public float dashValue = 0.2f;
         bool isRunning;
         PlayerController playerController;
-
+        [SerializeField] SpriteRenderer spriteRenderer;
         GameObject uiObject;
 
         int timesTaped;
@@ -51,7 +51,7 @@ namespace GreenTeam
             yield return new WaitUntil( () => CheckTimesTaped(10));
 
             GetComponent<Collider2D>().isTrigger = true;
-            GetComponent<SpriteRenderer>().color = new Color(0f,0f,0f,0.5f);
+            spriteRenderer.color = new Color(0f,0f,0f,0.5f);
 
             GameManager.inst.isInFanInteraction = false;
             uiObject.GetComponent<Text>().text = "";

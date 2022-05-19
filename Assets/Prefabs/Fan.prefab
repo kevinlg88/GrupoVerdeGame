@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashValue: 0.2
+  spriteRenderer: {fileID: 6813285003038903564}
 --- !u!61 &5155341207100146125
 BoxCollider2D:
   m_ObjectHideFlags: 0
