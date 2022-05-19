@@ -128,6 +128,9 @@ namespace GreenTeam
 
                     _death = value;
                     isGameRunning = false;
+                    
+                    GameManager.inst.audioManager.musicRunnings.Stop();
+                    GameManager.inst.audioManager.death.Play();
 
                     RunningCanvas.SetActive(false);
                     GameOverCanvas.SetActive(true);
@@ -257,7 +260,7 @@ namespace GreenTeam
             txtLikes.text = _likes.ToString();
 
             GameManager.inst.audioManager.musicMenu.Stop();
-            GameManager.inst.audioManager.musicRunnings.Stop();
+            GameManager.inst.audioManager.musicRunnings.Play();
 
             _isGameRunning = true;
             if (ON_START_GAME != null) ON_START_GAME();
@@ -274,6 +277,6 @@ namespace GreenTeam
         {
             playerController.playerXPositionPercentage += dashValue;
         }
-
+        public void UpdateLike() => txtLikes.text = totalLikes.ToString();
     }
 }

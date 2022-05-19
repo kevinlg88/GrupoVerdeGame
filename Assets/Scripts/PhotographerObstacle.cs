@@ -7,7 +7,7 @@ namespace GreenTeam
     {
         [SerializeField] bool destroyAfterCollision = true;
         [SerializeField] bool makeItIntangibleAfterCollision = false;
-        [SerializeField] bool isALike = false;
+        
 
         private Action<MovingObstacle> RELEASE_ACTION;
 
@@ -35,6 +35,7 @@ namespace GreenTeam
 
             if (collision.collider.CompareTag("Player"))
             {
+                GameManager.inst.audioManager.photographer.Play();
                 if (destroyAfterCollision)
                     Destroy(gameObject);
 
@@ -58,15 +59,7 @@ namespace GreenTeam
 
         public virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (isALike)
-            {
-                if (GameManager.inst.isInSineEffect)
-                    GameManager.inst.likes += 2;
-                else
-                    GameManager.inst.likes++;
-
-                Destroy(gameObject);
-            }
+            
 
             if (other.CompareTag("Wall")) Destroy(gameObject);
 

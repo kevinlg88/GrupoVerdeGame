@@ -42,6 +42,9 @@ namespace GreenTeam
 
             if (collision.collider.CompareTag("Player"))
             {
+                if(!isALike)
+                    GameManager.inst.audioManager.obstacleCollision.Play();
+                
                 if (destroyAfterCollision)
                     if (usePool)
                         RELEASE_ACTION(this);
@@ -58,15 +61,6 @@ namespace GreenTeam
 
         public virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (isALike)
-            {
-                if (GameManager.inst.isInSineEffect)
-                    GameManager.inst.likes += 2;
-                else
-                    GameManager.inst.likes++;
-
-                Destroy(gameObject);
-            }
 
             if (usePool)
             {
@@ -75,6 +69,21 @@ namespace GreenTeam
             else
             {
                 if (other.CompareTag("Wall")) Destroy(gameObject);
+            }
+
+            if (!other.CompareTag("Player"))
+                return;
+                
+            if (isALike)
+            {
+                GameManager.inst.audioManager.like.Play();
+
+                if (GameManager.inst.isInSineEffect)
+                    GameManager.inst.likes += 2;
+                else
+                    GameManager.inst.likes++;
+
+                Destroy(gameObject);
             }
         }
     }

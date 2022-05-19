@@ -53,11 +53,14 @@ namespace GreenTeam
         IEnumerator CoffeRoutine()
         {
             GameManager.inst.ChangeXPlayer(-dashValue);
+            GameManager.inst.audioManager.dash.Play();
+
             Destroy(gameObject);
             yield return null;
         }
         IEnumerator NotificationRoutine()
         {
+            GameManager.inst.audioManager.powerUp.Play();
             GameManager.inst.isInSineEffect = true;
             GameManager.inst.x2Likes.SetActive(true);
             gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);

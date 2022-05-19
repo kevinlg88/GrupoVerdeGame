@@ -44,6 +44,7 @@ namespace GreenTeam
             // GetComponent<MovingObstacle>().speed = 0;
 
             GameManager.inst.isInFanInteraction = true;
+            GameManager.inst.audioManager.fan.Play();
             // playerController.animator.SetFloat("velx", 0.5f);
             uiObject.GetComponent<Text>().text = "Toque varias vezes na tela";
 

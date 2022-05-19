@@ -6,23 +6,26 @@ namespace GreenTeam
 {
     public class AudioManager : MonoBehaviour
     {
-        public AudioSource run;
+        public AudioSource run1;
+        public AudioSource run2;
         public AudioSource slide;
         public AudioSource jump;
         public AudioSource death;
         public AudioSource musicMenu;
         public AudioSource musicRunnings;
-        
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        public AudioSource powerUp;
+        public AudioSource button;
+        public AudioSource buttonBack;
+        public AudioSource dash;
+        public AudioSource fan;
+        public AudioSource obstacleCollision;
+        public AudioSource photographer;
+        public AudioSource like;
 
-        // Update is called once per frame
-        void Update()
-        {
         
+        public void playButton()
+        {
+            button.Play();
         }
     }
 }

@@ -164,6 +164,7 @@ namespace GreenTeam
             {
                 if (isOnGround || CanDoubleJump())
                 {
+                    playJump();
                     rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(new Vector2(0f, jumpForce * 45), ForceMode2D.Force);
                     nbJumps++;
@@ -178,6 +179,7 @@ namespace GreenTeam
                     // else if (!isSliding)
                 }
                 _animator.SetTrigger("slide");
+                playSlide();
             }
         }
 
@@ -205,14 +207,14 @@ namespace GreenTeam
                 playerXPositionPercentage += _percentageToLost;
             }
             
-            if (collision.collider.CompareTag("EnemiesHorde"))
-            {
-                isDead = true;
-                GameManager.inst.death = true;
-                animator.SetTrigger("death");
-                GameManager.inst.audioManager.death.Play();
-                _animator.SetFloat("velx", 0);
-            }
+            // if (collision.collider.CompareTag("EnemiesHorde"))
+            // {
+            //     isDead = true;
+            //     GameManager.inst.death = true;
+            //     animator.SetTrigger("death");
+            //     GameManager.inst.audioManager.death.Play();
+            //     _animator.SetFloat("velx", 0);
+            // }
         }
 
         /// <summary>
@@ -247,15 +249,7 @@ namespace GreenTeam
                 }
         }
 
-        public void playRun1()
-        {
-            GameManager.inst.audioManager.run.Play();
-        }
-
-        public void playRun2()
-        {
-
-        }
+        
 
         public void playJump()
         {
