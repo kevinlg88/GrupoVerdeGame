@@ -7,16 +7,16 @@ namespace GreenTeam
 {
     public class PowerUp : MonoBehaviour
     {
-        enum PowerUpType {Coffe, Notification, NewPhone}
+        enum PowerUpType { Coffe, Notification, NewPhone }
         [Tooltip("Qual powerup vai ser")]
         [SerializeField] PowerUpType type = PowerUpType.Coffe;
 
         [Tooltip("Valor do dash do Coffe")]
-        [SerializeField]public float dashValue = 0.2f;
+        [SerializeField] public float dashValue = 0.2f;
 
         void Start()
         {
-        
+
         }
 
         void Update()
@@ -24,31 +24,30 @@ namespace GreenTeam
             if (!GameManager.inst.isGameRunning || GameManager.inst.isGamePaused)
                 return;
 
-            transform.position = transform.position + ( Vector3.left * GameManager.inst.obstaclesSpeed * Time.deltaTime);
-            
+            transform.position = transform.position + (Vector3.left * GameManager.inst.obstaclesSpeed * Time.deltaTime);
+
         }
 
-        void OnCollisionEnter2D(Collision2D other)
+        void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Wall"))
                 Destroy(gameObject);
 
-            if(!other.gameObject.CompareTag("Player"))
+            if (!other.gameObject.CompareTag("Player"))
                 return;
 
-            if(type == PowerUpType.Coffe)
+            if (type == PowerUpType.Coffe)
             {
                 StartCoroutine(nameof(CoffeRoutine));
             }
-            else if(type == PowerUpType.Notification)
+            else if (type == PowerUpType.Notification)
             {
                 StartCoroutine(nameof(NotificationRoutine));
             }
-            else if(type == PowerUpType.NewPhone)
+            else if (type == PowerUpType.NewPhone)
             {
                 StartCoroutine(nameof(NewPhoneRoutine));
             }
-
         }
 
         IEnumerator CoffeRoutine()
@@ -61,7 +60,7 @@ namespace GreenTeam
         {
             GameManager.inst.isInSineEffect = true;
             GameManager.inst.x2Likes.SetActive(true);
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             yield return new WaitForSeconds(15);
             GameManager.inst.isInSineEffect = false;
