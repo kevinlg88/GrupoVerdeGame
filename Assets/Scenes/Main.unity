@@ -1377,6 +1377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horda Fotografo
       objectReference: {fileID: 0}
+    - target: {fileID: 2416211161650472257, guid: 355943f484c948846b8c71409f444a48, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7827171423190017110, guid: 355943f484c948846b8c71409f444a48, type: 3}
       propertyPath: m_RootOrder
       value: 1
