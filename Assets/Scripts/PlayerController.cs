@@ -188,10 +188,19 @@ namespace GreenTeam
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
+            //verifica se colidiu com pilastra, se sim, seta morte como true, inicia animação e som de morte.
             if (collision.collider.CompareTag("MovingObstacles"))
             {
                 playerXPositionPercentage += Mathf.Lerp(0, _percentageToLost, 1f);
+            }
+            
+            if (collision.collider.CompareTag("EnemiesHorde"))
+            {
+                isDead = true;
+                GameManager.inst.death = true;
+                animator.SetTrigger("death");
+                GameManager.inst.audioManager.death.Play();
+                _animator.SetFloat("velx", 0);
             }
         }
 
