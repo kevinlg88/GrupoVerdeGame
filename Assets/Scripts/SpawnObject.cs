@@ -26,7 +26,8 @@ namespace GreenTeam
                 return;
 
             //Counts up
-            time += Time.deltaTime;
+            if(!GameManager.inst.isInFanInteraction)
+                time += Time.deltaTime;
 
 
             //Check if its the right time to spawn the object
@@ -39,7 +40,7 @@ namespace GreenTeam
             }
         }
 
-         void SetRandomTime ()
+        void SetRandomTime ()
         {
             spawnTime = Random.Range (minTime, maxTime);
             // Debug.Log ("Next object spawn in " + spawnTime + " seconds.");

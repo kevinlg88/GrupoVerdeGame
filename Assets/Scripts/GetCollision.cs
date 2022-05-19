@@ -23,7 +23,8 @@ namespace GreenTeam
         {
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia anima��o e som de morte.
             if (collision.collider.CompareTag("MovingObstacles")) {
-                player.playerXPositionPercentage += Mathf.Lerp(0, player.percentageToLost, 1f);
+                // player.playerXPositionPercentage += Mathf.Lerp(0, player.percentageToLost, 1f);
+                GameManager.inst.ChangeXPlayer(player.percentageToLost);
             }
         }
     }

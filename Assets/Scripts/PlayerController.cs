@@ -88,7 +88,15 @@ namespace GreenTeam
 
         float nbJumps = 0;
 
-        [Range(0, 1)] public float playerXPositionPercentage;
+        [Range(0, 1)] private float _playerXPositionPercentage;
+
+        public float playerXPositionPercentage{ 
+            get => _playerXPositionPercentage;
+            set {
+                _currentTime = 0f;
+                _playerXPositionPercentage = value;
+            }
+        }
 
         [Header("References")]
 
@@ -122,16 +130,16 @@ namespace GreenTeam
             if (!GameManager.inst.isGameRunning || GameManager.inst.isGamePaused)
                 return;
 
-            if (playerXPositionPercentage < -0.6f)
-                playerXPositionPercentage = -0.6f;
-
-            playerXPositionPercentage += Time.deltaTime * loseSpeedMultiplier;
             IsOnGroundCheck();
             CheckIfLose();
             inputs.UpdateInputs();
             Movement();
 
             isSliding = animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"); //if is sliding
+            
+            if (playerXPositionPercentage < -0.6f)
+                playerXPositionPercentage = -0.6f;
+
         }
 
         void FixedUpdate()
@@ -140,7 +148,9 @@ namespace GreenTeam
 
             _animator.SetFloat("vely", rb.velocity.y);
 
-            SetXPosition();
+            _playerXPositionPercentage += Time.deltaTime * loseSpeedMultiplier;
+
+            ChangeXPosition(initialPosition.x + (losePosition.position.x * playerXPositionPercentage));
         }
 
         private bool CanDoubleJump() => nbJumps < 1 && canDoubleJump;
@@ -191,7 +201,8 @@ namespace GreenTeam
             //verifica se colidiu com pilastra, se sim, seta morte como true, inicia animação e som de morte.
             if (collision.collider.CompareTag("MovingObstacles"))
             {
-                playerXPositionPercentage += Mathf.Lerp(0, _percentageToLost, 1f);
+                _currentTime = 0f;
+                playerXPositionPercentage += _percentageToLost;
             }
             
             if (collision.collider.CompareTag("EnemiesHorde"))
@@ -204,14 +215,22 @@ namespace GreenTeam
             }
         }
 
-        void SetXPosition()
+        /// <summary>
+        /// This property controls the lerp of the playerXPositionPercentage.
+        /// </summary>
+        float _currentTime = 0f;
+        void ChangeXPosition(float newXPosition)
         {
             if (!GameManager.inst.isGameRunning)
                 return;
 
-            float newXPosition = initialPosition.x + (losePosition.position.x * playerXPositionPercentage);
-            // Debug.Log(newXPosition);
-            transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+            if(_currentTime >= .5f)
+                _currentTime = 0f;
+            
+            _currentTime += Time.deltaTime;
+
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, newXPosition, _currentTime), transform.position.y, transform.position.z);
+            
         }
 
         void CheckIfLose()
