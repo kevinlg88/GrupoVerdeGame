@@ -29,7 +29,7 @@ namespace GreenTeam
         [Tooltip("Define o quão rapido o a dificuldade vai aumentar")]
         [SerializeField] float difcicultMultiplier = 1f;
         private float _travelledDinstance;
-        
+
         private float travelledDinstanceMultiplier = 1f;
         private int _likes;
         private int totalLikes;
@@ -50,8 +50,6 @@ namespace GreenTeam
         [SerializeField]
         private Text txtLikes;
         [SerializeField]
-        private Text txtLikesShop;
-        [SerializeField]
         private GameObject[] hidenPlay;
 
         [SerializeField] GameObject MenuCanvas;
@@ -70,34 +68,38 @@ namespace GreenTeam
         public Action ON_END_GAME;
 
         #region GETTER_SETTERS
-        public bool isGameRunning{
+        public bool isGameRunning
+        {
             get => _isGameRunning;
 
-            set 
+            set
             {
-                if(value)
+                if (value)
                     _isGameRunning = value;
                 else
                 {
                     _isGameRunning = value;
 
-                    if(ON_END_GAME != null) ON_END_GAME();
+                    if (ON_END_GAME != null) ON_END_GAME();
                 }
             }
         }
-        public bool isGamePaused{
+        public bool isGamePaused
+        {
             get => _isGamePaused;
 
-            set 
+            set
             {
                 _isGamePaused = value;
             }
         }
-        public bool death { 
+        public bool death
+        {
             get => _death;
 
-            set {
-                if(value)
+            set
+            {
+                if (value)
                 {
                     //seta quais itens do menu ir� aparecer ao morrer e verifica se h� um novo high score, se sim, seta na ui
                     if (PlayerPrefs.HasKey("HScore"))
@@ -136,26 +138,29 @@ namespace GreenTeam
                 }
             }
         }
-        public int likes 
+        public int likes
         {
             get => _likes;
 
-            set 
+            set
             {
                 _likes = value;
                 // txtLikes.text = String.Concat("Likes: ", _likes);
                 txtLikes.text = _likes.ToString();
             }
         }
-        private float travelledDinstance{ 
+        private float travelledDinstance
+        {
             get => _travelledDinstance;
-            set{
+            set
+            {
                 _travelledDinstance = value;
                 txtDistancia.text = String.Concat("Distancia Percorrida: ", MathF.Round(_travelledDinstance));
-            } 
+            }
         }
 
-        public float currentDificult{
+        public float currentDificult
+        {
             get => _currentDificult;
         }
         #endregion
@@ -163,7 +168,7 @@ namespace GreenTeam
         void Awake()
         {
             Screen.SetResolution(1280, 720, false);
-            
+
             if (inst == null)
             {
                 inst = this;
@@ -186,11 +191,10 @@ namespace GreenTeam
                 PlayerPrefs.SetInt("Likes", _likes);
             }
 
-            
+
             // txtLikes.text = String.Concat("Likes :", totalLikes);
             txtLikes.text = totalLikes.ToString();
-            txtLikesShop.text = totalLikes.ToString();
-            
+
             _currentDificult = initialDificult;
             VerificaNovoHighScore();
             playerController = FindObjectOfType<PlayerController>();
@@ -199,63 +203,68 @@ namespace GreenTeam
 
         void Update()
         {
-            if(!isGameRunning)
+            if (!isGameRunning)
                 return;
             travelledDinstance += Time.deltaTime * travelledDinstanceMultiplier * _currentDificult;//distancia percorrida pelo jogador
-            
-            if(isInFanInteraction)
+
+            if (isInFanInteraction)
                 obstaclesSpeed = 0f;
             else
                 obstaclesSpeed = initialObstaclesSpeed * currentDificult;
 
             UpdateDificult();
 
-            
+
         }
 
         void UpdateDificult()
         {
-            if(_currentDificult < maxDificult)
-                _currentDificult += Time.deltaTime * (difcicultMultiplier/100);
+            if (_currentDificult < maxDificult)
+                _currentDificult += Time.deltaTime * (difcicultMultiplier / 100);
 
-            if(!isInFanInteraction)
+            if (!isInFanInteraction)
                 playerController.animator.SetFloat("velx", 1 * _currentDificult);
             else
-                playerController.animator.SetFloat("velx", (1 * _currentDificult)*0.2f);
+                playerController.animator.SetFloat("velx", (1 * _currentDificult) * 0.2f);
 
         }
 
-        private void VerificaNovoHighScore() {
+        private void VerificaNovoHighScore()
+        {
             if (PlayerPrefs.HasKey("HScore"))
             {
                 hidenPlay[2].GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("HScore");
             }
-            else {
+            else
+            {
                 hidenPlay[2].GetComponent<Text>().text = "High Score: 0";
             }
 
         }
-        public void addScore() {
+        public void addScore()
+        {
             score++;
             txtScore.text = "Score: " + score;
         }
 
-        public void StartGame() {
+        public void StartGame()
+        {
 
             MenuCanvas.SetActive(false);
             GameOverCanvas.SetActive(false);
             RunningCanvas.SetActive(true);
             // txtLikes.text = String.Concat("Likes: ",_likes);
             txtLikes.text = _likes.ToString();
-            
+
             GameManager.inst.audioManager.musicMenu.Stop();
             GameManager.inst.audioManager.musicRunnings.Stop();
 
             _isGameRunning = true;
-            if(ON_START_GAME != null) ON_START_GAME();
+            if (ON_START_GAME != null) ON_START_GAME();
         }
 
-        public void loadScene() {
+        public void loadScene()
+        {
             //recarrega a cena(play again)
             // hidenPlay[3].GetComponent<Button>().interactable = false;
             SceneManager.LoadScene("Main");
