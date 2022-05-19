@@ -61,7 +61,8 @@ namespace GreenTeam
 
             // GetComponent<MovingObstacle>().speed = 4;
 
-            playerController.playerXPositionPercentage -= Mathf.Lerp(0, dashValue, 1f);
+            // playerController.playerXPositionPercentage -= Mathf.Lerp(0, dashValue, 1f);
+            GameManager.inst.ChangeXPlayer(-dashValue);
         }
 
         bool CheckTimesTaped(float expectedTaps)

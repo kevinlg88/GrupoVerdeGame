@@ -127,12 +127,6 @@ namespace GreenTeam
                     _death = value;
                     isGameRunning = false;
 
-                    // hidenPlay[1].SetActive(true);
-                    // hidenPlay[1].GetComponent<Text>().text = "Game Over";
-                    // hidenPlay[2].SetActive(true);
-                    // hidenPlay[3].SetActive(true);
-                    // hidenPlay[4].SetActive(false);
-
                     RunningCanvas.SetActive(false);
                     GameOverCanvas.SetActive(true);
                 }
@@ -247,11 +241,6 @@ namespace GreenTeam
         }
 
         public void StartGame() {
-            //seta quais itens do menu ir� aparecer ao iniciar e init = true
-            // hidenPlay[0].SetActive(false);
-            // hidenPlay[1].SetActive(false);
-            // hidenPlay[2].SetActive(false);
-            // hidenPlay[4].SetActive(true);
 
             MenuCanvas.SetActive(false);
             GameOverCanvas.SetActive(false);
@@ -259,7 +248,8 @@ namespace GreenTeam
             // txtLikes.text = String.Concat("Likes: ",_likes);
             txtLikes.text = _likes.ToString();
             
-            
+            GameManager.inst.audioManager.musicMenu.Stop();
+            GameManager.inst.audioManager.musicRunnings.Stop();
 
             _isGameRunning = true;
             if(ON_START_GAME != null) ON_START_GAME();
@@ -271,45 +261,10 @@ namespace GreenTeam
             SceneManager.LoadScene("Main");
         }
 
-        public void DashPlayer(float dashValue)
+        public void ChangeXPlayer(float dashValue, float duration = 1f)
         {
-            playerController.playerXPositionPercentage += Mathf.Lerp(0, dashValue, 1f);
+            playerController.playerXPositionPercentage += dashValue;
         }
 
-        // public bool getDeath()
-        // {
-        //     return _death;
-        // }
-        // public void SetDeath()
-        // {
-        //     //seta quais itens do menu ir� aparecer ao morrer e verifica se h� um novo high score, se sim, seta na ui
-        //     if (PlayerPrefs.HasKey("HScore"))
-        //     {
-        //         if (PlayerPrefs.GetInt("HScore") < score)
-        //         {
-        //             PlayerPrefs.SetInt("HScore", score);
-        //         }
-        //     }
-        //     else
-        //     {
-        //         PlayerPrefs.SetInt("HScore", score);
-        //     }
-        //    VerificaNovoHighScore();
-        //    _death = true;
-        //    hidenPlay[1].SetActive(true);
-        //    hidenPlay[1].GetComponent<Text>().text = "Game Over";
-        //    hidenPlay[2].SetActive(true);
-        //    hidenPlay[3].SetActive(true);
-        //    hidenPlay[4].SetActive(false);
-        // }
-
-        // public bool getInit()
-        // {
-        //     return _isGameRunning;
-        // }
-        // public void SetInit(bool p)
-        // {
-        //     _isGameRunning = p;
-        // }
     }
 }

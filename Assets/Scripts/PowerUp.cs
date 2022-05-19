@@ -53,7 +53,7 @@ namespace GreenTeam
 
         IEnumerator CoffeRoutine()
         {
-            GameManager.inst.DashPlayer(-dashValue);
+            GameManager.inst.ChangeXPlayer(-dashValue);
             Destroy(gameObject);
             yield return null;
         }
