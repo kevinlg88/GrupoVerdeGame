@@ -1377,6 +1377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horda Fotografo
       objectReference: {fileID: 0}
+    - target: {fileID: 2416211161650472257, guid: 355943f484c948846b8c71409f444a48, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7827171423190017110, guid: 355943f484c948846b8c71409f444a48, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4682,7 +4686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996942044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.2, y: 1.30232, z: -0.27727947}
+  m_LocalPosition: {x: -41.13, y: 1.30232, z: -0.27727947}
   m_LocalScale: {x: 1, y: 10.190416, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6815,6 +6819,11 @@ MonoBehaviour:
   - {fileID: 6694809298468432925, guid: 19d1957433284eb4dbbffb5ffe939d1e, type: 3}
   - {fileID: 6694809298468432925, guid: 0060dbb324b849144ab58941060f0224, type: 3}
   - {fileID: 6694809298468432925, guid: f1bda98f341f29546b895153f8d84d76, type: 3}
+  - {fileID: 6694809298468432925, guid: a2997f57419683847b12f1975fcbb81f, type: 3}
+  - {fileID: 6694809298468432925, guid: 678e6527a1283444895fc19a59c4fe2a, type: 3}
+  - {fileID: 6694809298468432925, guid: abe46df48a1e64344a374217dd4a5b14, type: 3}
+  - {fileID: 6694809298468432925, guid: c77280ed78fd74b41bc0dff49b4dfba7, type: 3}
+  - {fileID: 6694809298468432925, guid: 42313cd8281f256499f4e7accccdd989, type: 3}
   maxTime: 6
   minTime: 4
   useBlocks: 1
