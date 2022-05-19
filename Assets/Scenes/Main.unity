@@ -5317,7 +5317,7 @@ MonoBehaviour:
   RunningCanvas: {fileID: 679270802}
   x2Likes: {fileID: 1465776630}
   GameOverCanvas: {fileID: 2052077719}
-  ShopCanvas: {fileID: 0}
+  ShopCanvas: {fileID: 312060174}
   audioManager: {fileID: 810408689}
 --- !u!4 &1496872633
 Transform:
