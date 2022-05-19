@@ -6815,6 +6815,8 @@ MonoBehaviour:
   - {fileID: 6694809298468432925, guid: 19d1957433284eb4dbbffb5ffe939d1e, type: 3}
   - {fileID: 6694809298468432925, guid: 0060dbb324b849144ab58941060f0224, type: 3}
   - {fileID: 6694809298468432925, guid: f1bda98f341f29546b895153f8d84d76, type: 3}
+  - {fileID: 6694809298468432925, guid: a2997f57419683847b12f1975fcbb81f, type: 3}
+  - {fileID: 6694809298468432925, guid: 678e6527a1283444895fc19a59c4fe2a, type: 3}
   maxTime: 6
   minTime: 4
   useBlocks: 1
