@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usePool: 0
-  destroyAfterCollision: 1
+  destroyAfterCollision: 0
   makeItIntangibleAfterCollision: 1
   isALike: 0
 --- !u!61 &2477827405329507075
