@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2359618812167078861}
   - component: {fileID: 2465281807508707805}
-  - component: {fileID: 6479659518913303448}
+  - component: {fileID: 881048527572797596}
   m_Layer: 0
   m_Name: Fotografo
   m_TagString: MovingObstacles
@@ -91,7 +91,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.46902, y: 3.1319466}
   m_EdgeRadius: 0
---- !u!114 &6479659518913303448
+--- !u!114 &881048527572797596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,11 +100,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 911030157019804890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c153d08ad1d645478131cecd7aa4a4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d2b7b2f0ca4dee4994979706b28758f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usePool: 0
-  destroyAfterCollision: 1
+  destroyAfterCollision: 0
   makeItIntangibleAfterCollision: 1
   isALike: 0
 --- !u!1 &992720979078708631
