@@ -18,7 +18,7 @@ namespace GreenTeam
             public void UpdateInputs()
             {
 
-#if UNITY_EDITOR || UNITY_WEBGL
+#if UNITY_EDITOR || UNITY_WEBGL || UNITY_STANDALONE
                 PCInputs();
 #else
                 MobileInputs();

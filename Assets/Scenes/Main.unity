@@ -3885,7 +3885,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 39785cb6bd006d448a327eabf5fc02cf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.856
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7325,8 +7325,8 @@ MonoBehaviour:
   isInFanInteraction: 0
   isInSineEffect: 0
   initialDificult: 1
-  maxDificult: 2
-  difcicultMultiplier: 0.15
+  maxDificult: 3
+  difcicultMultiplier: 0.5
   initialObstaclesSpeed: 4
   obstaclesSpeed: 4
   txtScore: {fileID: 1795399328}
