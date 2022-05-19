@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 382601663731377076}
   - component: {fileID: 2477827405329507075}
   m_Layer: 0
-  m_Name: Obstacle1
+  m_Name: Obstacle - Lustre
   m_TagString: MovingObstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePool: 0
   destroyAfterCollision: 1
-  makeItIntangibleAfterCollision: 0
+  makeItIntangibleAfterCollision: 1
   isALike: 0
 --- !u!61 &2477827405329507075
 BoxCollider2D:
