@@ -40,6 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2359618812167078861}
+  - component: {fileID: 2465281807508707805}
+  - component: {fileID: 6479659518913303448}
   m_Layer: 0
   m_Name: Fotografo
   m_TagString: Untagged
@@ -54,15 +56,57 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911030157019804890}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.56, y: -3.13, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.013479769, y: -3.13, z: -3.0738516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8912658005829500198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!61 &2465281807508707805
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911030157019804890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.428276, y: 5.7313423}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.38, y: 5.68}
+    newSize: {x: 5.38, y: 5.68}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.46902, y: 3.1319466}
+  m_EdgeRadius: 0
+--- !u!114 &6479659518913303448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911030157019804890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c153d08ad1d645478131cecd7aa4a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usePool: 0
+  destroyAfterCollision: 1
+  makeItIntangibleAfterCollision: 1
+  isALike: 0
 --- !u!1 &992720979078708631
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +208,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2050137863319338496}
   m_Bounds:
-    m_Center: {x: 0.008465171, y: 0, z: 0}
+    m_Center: {x: 0.008465052, y: 0, z: 0}
     m_Extent: {x: 1.2465353, y: 2.5550008, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -471,7 +515,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6600580725975028004}
   m_Bounds:
-    m_Center: {x: 0.0018699169, y: -0.0038906336, z: 0}
+    m_Center: {x: 0.0018694401, y: -0.0038906336, z: 0}
     m_Extent: {x: 1.4881301, y: 1.6911101, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -642,7 +686,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6872452656429219756}
   m_Bounds:
-    m_Center: {x: 0.0009454489, y: 0.0016640425, z: 0}
+    m_Center: {x: 0.0009456873, y: 0.0016640425, z: 0}
     m_Extent: {x: 1.678455, y: 1.5033351, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -924,7 +968,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6841764812489391153}
   m_Bounds:
-    m_Center: {x: 0.12781978, y: -0.0050001144, z: 0}
+    m_Center: {x: 0.12782013, y: -0.0050001144, z: 0}
     m_Extent: {x: 1.5882797, y: 2.3149996, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1030,7 +1074,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7807232172725786832}
   m_Bounds:
-    m_Center: {x: 0.0016549826, y: 0.0020899773, z: 0}
+    m_Center: {x: 0.001655221, y: 0.0020899773, z: 0}
     m_Extent: {x: 1.3483454, y: 2.4979105, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1221,7 +1265,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 614356953425236896}
   m_Bounds:
-    m_Center: {x: 0.0022554398, y: 0.0018000603, z: 0}
+    m_Center: {x: 0.0022552013, y: 0.0018000603, z: 0}
     m_Extent: {x: 3.997745, y: 2.92185, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

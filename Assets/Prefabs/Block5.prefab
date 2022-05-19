@@ -143,6 +143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6694809298468432922}
     m_Modifications:
+    - target: {fileID: 382601663731377076, guid: d79c32aaaad9d5d4ab81d85ba8ef8166, type: 3}
+      propertyPath: makeItIntangibleAfterCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 382601663731377077, guid: d79c32aaaad9d5d4ab81d85ba8ef8166, type: 3}
       propertyPath: m_Name
       value: Obstacle1 (1)
@@ -527,6 +531,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6694809298468432922}
     m_Modifications:
+    - target: {fileID: 382601663731377076, guid: d79c32aaaad9d5d4ab81d85ba8ef8166, type: 3}
+      propertyPath: makeItIntangibleAfterCollision
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 382601663731377077, guid: d79c32aaaad9d5d4ab81d85ba8ef8166, type: 3}
       propertyPath: m_Name
       value: Obstacle1 (2)

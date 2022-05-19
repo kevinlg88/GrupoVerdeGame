@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 382601663731377076}
   - component: {fileID: -6667636999380446313}
   m_Layer: 0
-  m_Name: Obstacle2
+  m_Name: "Obstacle - Ch\xE3o"
   m_TagString: MovingObstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePool: 0
   destroyAfterCollision: 1
-  makeItIntangibleAfterCollision: 0
+  makeItIntangibleAfterCollision: 1
+  isALike: 0
 --- !u!61 &-6667636999380446313
 BoxCollider2D:
   m_ObjectHideFlags: 0
