@@ -144,7 +144,7 @@ namespace GreenTeam
 
         void FixedUpdate()
         {
-            if (isDead) return;
+            if (isDead || !GameManager.inst.isGameRunning) return;
 
             _animator.SetFloat("vely", rb.velocity.y);
 
