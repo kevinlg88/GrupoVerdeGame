@@ -6,7 +6,7 @@ using UnityEngine.U2D.Animation;
 
 namespace GreenTeam
 {
-    public enum Skin { Placeholder, Oscar, Carlos };
+    public enum Skin { Placeholder, Oscar, Carlos, Kiki };
     public class SkinChanger : MonoBehaviour
     {
         [SerializeField] Skin initialSkin = Skin.Oscar;
