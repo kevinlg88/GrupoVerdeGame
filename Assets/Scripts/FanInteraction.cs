@@ -46,7 +46,8 @@ namespace GreenTeam
             GameManager.inst.isInFanInteraction = true;
             GameManager.inst.audioManager.fan.Play();
             // playerController.animator.SetFloat("velx", 0.5f);
-            uiObject.GetComponent<Text>().text = "Toque varias vezes na tela";
+            uiObject.GetComponent<Text>().text = "TAP REPEATEDLY\nTO INTERACT\nWITH YOUR FAN!";
+            // uiObject.GetComponent<Text>().text = "Toque varias vezes na tela";
 
 
             yield return new WaitUntil( () => CheckTimesTaped(10));
