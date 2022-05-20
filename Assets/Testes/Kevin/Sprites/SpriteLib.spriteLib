@@ -32,8 +32,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -2360840096552818403, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -2360840096552818403, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: -8982106717878109998, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8982106717878109998, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Head
     m_Hash: 130111906
     m_CategoryList: []
@@ -53,8 +58,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -719956321405527834, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -719956321405527834, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: 211833172370067195, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 211833172370067195, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Arm-L
     m_Hash: 2110317012
     m_CategoryList: []
@@ -74,8 +84,13 @@ MonoBehaviour:
       m_Sprite: {fileID: 5791915035254666875, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 5791915035254666875, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: -3397532377817969420, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3397532377817969420, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Arm-R
     m_Hash: -2016944969
     m_CategoryList: []
@@ -95,8 +110,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -8299339455718450174, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -8299339455718450174, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: 6555110635812831949, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 6555110635812831949, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Body
     m_Hash: 2073732236
     m_CategoryList: []
@@ -116,8 +136,13 @@ MonoBehaviour:
       m_Sprite: {fileID: 3694223596218483641, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 3694223596218483641, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: 8961418105272514736, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8961418105272514736, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Leg-L
     m_Hash: 1157746581
     m_CategoryList: []
@@ -137,8 +162,13 @@ MonoBehaviour:
       m_Sprite: {fileID: 5417021735262425034, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 5417021735262425034, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: 7508025190263107261, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7508025190263107261, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Leg-R
     m_Hash: -1089539338
     m_CategoryList: []
@@ -158,6 +188,11 @@ MonoBehaviour:
       m_Sprite: {fileID: -8603832794405172849, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -8603832794405172849, guid: 903addb6454545c4f8774dad18edf35e, type: 3}
+    - m_Name: Kiki
+      m_Hash: -1741645025
+      m_Sprite: {fileID: -1123440236554883539, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1123440236554883539, guid: 77dec6e6179e650428ac31c17954f2cd, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 
